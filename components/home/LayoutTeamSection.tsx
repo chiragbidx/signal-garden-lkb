@@ -1,96 +1,41 @@
-import GithubIcon from "@/components/icons/github-icon";
-import LinkedInIcon from "@/components/icons/linkedin-icon";
-import XIcon from "@/components/icons/x-icon";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import Image from "next/image";
-import Link from "next/link";
-import { getHomeContent } from "@/content/home";
+import { home } from "@/content/home";
 
-const { team } = getHomeContent();
+export default function LayoutTeamSection() {
+  const { team } = home;
+  if (!team || team.length === 0) return null;
 
-const socialIcon = (socialName: string) => {
-  switch (socialName) {
-    case "LinkedIn":
-      return <LinkedInIcon />;
-    case "Github":
-      return <GithubIcon />;
-    case "X":
-      return <XIcon />;
-  }
-};
-
-export const LayoutTeamSection = () => {
   return (
-    <section id="team" className="container mx-auto lg:w-[75%] py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          {team.eyebrow}
-        </h2>
-
-        <h2 className="text-3xl md:text-4xl text-center font-bold">
-          {team.heading}
-        </h2>
+    <section
+      id="layout-team"
+      className="max-w-5xl mx-auto py-20 md:py-28 px-4"
+    >
+      <div className="mb-10 text-center">
+        <h2 className="text-4xl font-bold tracking-tight mb-2">Meet the Team</h2>
+        <p className="text-muted-foreground">
+          The people building, supporting and improving PulseCRM for you.
+        </p>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {team.members.map(
-          (
-            { imageUrl, firstName, lastName, positions, socialNetworks },
-            index
-          ) => (
-            <Card
-              key={index}
-              className="bg-muted/60 dark:bg-card flex flex-col h-full overflow-hidden group/hoverimg"
-            >
-              <CardHeader className="p-0 gap-0">
-                <div className="h-full overflow-hidden">
-                  <Image
-                    src={imageUrl}
-                    alt={`${firstName} ${lastName}`}
-                    width={300}
-                    height={300}
-                    className="w-full aspect-square object-cover saturate-0 transition-all duration-200 ease-linear size-full group-hover/hoverimg:saturate-100 group-hover/hoverimg:scale-[1.01]"
-                  />
-                </div>
-                <CardTitle className="py-6 pb-4 px-6">
-                  {firstName}
-                  <span className="text-primary ml-2">{lastName}</span>
-                </CardTitle>
-              </CardHeader>
-              {positions.map((position, idx) => (
-                <CardContent
-                  key={idx}
-                  className={`pb-0 text-muted-foreground ${
-                    idx === positions.length - 1 && "pb-6"
-                  }`}
-                >
-                  {position}
-                  {idx < positions.length - 1 && <span>,</span>}
-                </CardContent>
-              ))}
-
-              <CardFooter className="space-x-4 mt-auto">
-                {socialNetworks.map(({ name, url }, idx) => (
-                  <Link
-                    key={idx}
-                    href={url}
-                    target="_blank"
-                    className="hover:opacity-80 transition-all"
-                  >
-                    {socialIcon(name)}
-                  </Link>
-                ))}
-              </CardFooter>
-            </Card>
-          )
-        )}
+      <div className="grid md:grid-cols-3 gap-8 place-items-center">
+        {team.map((member) => (
+          <div
+            key={member.email}
+            className="flex flex-col items-center space-y-2"
+          >
+            {member.image && (
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-24 h-24 rounded-full border object-cover"
+              />
+            )}
+            <span className="font-semibold text-lg">{member.name}</span>
+            <span className="text-sm text-muted-foreground">
+              {member.role}
+            </span>
+            <span className="text-xs text-muted-foreground">{member.email}</span>
+          </div>
+        ))}
       </div>
     </section>
   );
-};
+}
