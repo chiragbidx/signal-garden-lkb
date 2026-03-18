@@ -1,0 +1,29 @@
+{
+  "activities": {
+    "columns": [
+      "id",
+      "team_id",
+      "owner_id",
+      "type",
+      "subject",
+      "description",
+      "date_time",
+      "contact_id",
+      "organization_id",
+      "deal_id",
+      "created_at",
+      "updated_at"
+    ],
+    "primaryKey": ["id"],
+    "indexes": [
+      ["team_id"], ["owner_id"], ["contact_id"], ["organization_id"], ["deal_id"], ["date_time"]
+    ],
+    "foreignKeys": {
+      "team_id": "teams.id",
+      "owner_id": "users.id",
+      "contact_id": "contacts.id",
+      "organization_id": "organizations.id",
+      "deal_id": "deals.id"
+    }
+  }
+}
