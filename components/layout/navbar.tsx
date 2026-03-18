@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/theme/theme-toggle";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
@@ -20,7 +20,7 @@ export default function Navbar() {
         <Button asChild variant={pathname === "/auth" ? "secondary" : "outline"}>
           <Link href="/auth">{pathname === "/auth" ? "Sign In" : "Log in"}</Link>
         </Button>
-        <ModeToggle />
+        <ThemeToggle />
       </div>
     </nav>
   );
