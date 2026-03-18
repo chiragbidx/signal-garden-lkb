@@ -1,38 +1,19 @@
-export interface Contact {
+export interface Deal {
   id: string;
   teamId: string;
   ownerId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-  jobTitle?: string;
+  title: string;
+  value: number;
+  currency: string;
+  status: "New" | "Qualified" | "Proposal" | "Won" | "Lost";
   organizationId?: string;
-  tags?: string;
+  contactId?: string;
+  expectedCloseDate?: string;
+  description?: string;
   notes?: string;
   createdAt: Date;
   updatedAt: Date;
   organization?: Organization;
+  contact?: Contact;
   owner?: User;
-}
-
-export interface Organization {
-  id: string;
-  teamId: string;
-  name: string;
-  domain: string;
-  address?: string;
-  description?: string;
-  industry?: string;
-  tags?: string;
-  primaryContactId?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
 }
