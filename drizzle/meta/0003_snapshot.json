@@ -1,0 +1,26 @@
+{
+  "organizations": {
+    "columns": [
+      "id",
+      "team_id",
+      "name",
+      "domain",
+      "address",
+      "description",
+      "industry",
+      "tags",
+      "primary_contact_id",
+      "created_at",
+      "updated_at"
+    ],
+    "primaryKey": ["id"],
+    "unique": [["team_id", "domain"]],
+    "indexes": [
+      ["team_id"], ["primary_contact_id"]
+    ],
+    "foreignKeys": {
+      "team_id": "teams.id",
+      "primary_contact_id": "contacts.id"
+    }
+  }
+}
