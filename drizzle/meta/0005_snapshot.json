@@ -1,0 +1,30 @@
+{
+  "deals": {
+    "columns": [
+      "id",
+      "team_id",
+      "owner_id",
+      "title",
+      "value",
+      "currency",
+      "status",
+      "organization_id",
+      "contact_id",
+      "expected_close_date",
+      "description",
+      "notes",
+      "created_at",
+      "updated_at"
+    ],
+    "primaryKey": ["id"],
+    "indexes": [
+      ["team_id"], ["organization_id"], ["contact_id"], ["owner_id"], ["status"]
+    ],
+    "foreignKeys": {
+      "team_id": "teams.id",
+      "owner_id": "users.id",
+      "organization_id": "organizations.id",
+      "contact_id": "contacts.id"
+    }
+  }
+}
