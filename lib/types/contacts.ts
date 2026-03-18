@@ -1,19 +1,18 @@
-export interface Deal {
+export interface Activity {
   id: string;
   teamId: string;
   ownerId: string;
-  title: string;
-  value: number;
-  currency: string;
-  status: "New" | "Qualified" | "Proposal" | "Won" | "Lost";
-  organizationId?: string;
-  contactId?: string;
-  expectedCloseDate?: string;
+  type: "call" | "meeting" | "email" | "note" | "task";
+  subject: string;
   description?: string;
-  notes?: string;
+  dateTime: string;
+  contactId?: string;
+  organizationId?: string;
+  dealId?: string;
   createdAt: Date;
   updatedAt: Date;
-  organization?: Organization;
   contact?: Contact;
+  organization?: Organization;
+  deal?: Deal;
   owner?: User;
 }
