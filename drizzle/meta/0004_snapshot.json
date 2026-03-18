@@ -1,0 +1,29 @@
+{
+  "contacts": {
+    "columns": [
+      "id",
+      "team_id",
+      "owner_id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "job_title",
+      "organization_id",
+      "tags",
+      "notes",
+      "created_at",
+      "updated_at"
+    ],
+    "primaryKey": ["id"],
+    "unique": [["team_id", "email"]],
+    "indexes": [
+      ["team_id"], ["organization_id"], ["owner_id"]
+    ],
+    "foreignKeys": {
+      "team_id": "teams.id",
+      "owner_id": "users.id",
+      "organization_id": "organizations.id"
+    }
+  }
+}
