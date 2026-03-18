@@ -1,6 +1,6 @@
 import LayoutHeroSection from "@/components/home/LayoutHeroSection";
 import LayoutSponsorsSection from "@/components/home/LayoutSponsorsSection";
-import LayoutBenefitsSection from "@/components/home/LayoutBenefitsSection";
+import { LayoutBenefitsSection } from "@/components/home/LayoutBenefitsSection";
 import LayoutFeatureGridSection from "@/components/home/LayoutFeatureGridSection";
 import LayoutServicesSection from "@/components/home/LayoutServicesSection";
 import LayoutTestimonialSection from "@/components/home/LayoutTestimonialSection";
